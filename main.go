@@ -1,9 +1,12 @@
 package main
 
 type Stack struct {
-
 }
 
-func main(){
+func (s *Stack) IsEmpty() bool {
+	return false
+}
+
+func main() {
 
 }
