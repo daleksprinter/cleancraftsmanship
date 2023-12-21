@@ -20,3 +20,14 @@ func TestAfterOnePushIsNotEmpty(t *testing.T) {
 		t.Errorf("got %v\nwant %v", actual, expected)
 	}
 }
+
+func TestAfterOnePushAndOnePopIsNotEmpty(t *testing.T) {
+	s := NewStack()
+	s.Push(0)
+	s.Pop()
+	actual := s.IsEmpty()
+	expected := true
+	if actual != expected {
+		t.Errorf("got %v\nwant %v", actual, expected)
+	}
+}

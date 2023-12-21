@@ -16,6 +16,11 @@ func (s *Stack) Push(i int) {
 	s.empty = false
 }
 
+func (s *Stack) Pop() int {
+	s.empty = true
+	return -1
+}
+
 func main() {
 
 }
