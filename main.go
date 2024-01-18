@@ -1,8 +1,15 @@
 package main
 
+import "errors"
+
+var (
+	ErrUnderflow = errors.New("underflow")
+)
+
 type Stack struct {
-	empty bool
-	size  int
+	empty   bool
+	element int
+	size    int
 }
 
 func NewStack() *Stack {
@@ -18,11 +25,15 @@ func (s *Stack) IsEmpty() bool {
 
 func (s *Stack) Push(i int) {
 	s.size++
+	s.element = i
 }
 
-func (s *Stack) Pop() int {
+func (s *Stack) Pop() (int, error) {
+	if s.size == 0 {
+		return -1, ErrUnderflow
+	}
 	s.size--
-	return -1
+	return s.element, nil
 }
 
 func (s *Stack) GetSize() int {
