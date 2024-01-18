@@ -7,15 +7,16 @@ var (
 )
 
 type Stack struct {
-	empty   bool
-	element int
-	size    int
+	empty    bool
+	elements []int
+	size     int
 }
 
 func NewStack() *Stack {
 	return &Stack{
-		empty: true,
-		size:  0,
+		empty:    true,
+		elements: make([]int, 100),
+		size:     0,
 	}
 }
 
@@ -24,8 +25,8 @@ func (s *Stack) IsEmpty() bool {
 }
 
 func (s *Stack) Push(i int) {
+	s.elements[s.size] = i
 	s.size++
-	s.element = i
 }
 
 func (s *Stack) Pop() (int, error) {
@@ -33,7 +34,7 @@ func (s *Stack) Pop() (int, error) {
 		return -1, ErrUnderflow
 	}
 	s.size--
-	return s.element, nil
+	return s.elements[s.size], nil
 }
 
 func (s *Stack) GetSize() int {

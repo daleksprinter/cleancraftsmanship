@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestStack(t *testing.T) {
 	t.Run("TestCanCreateStack", func(t *testing.T) {
@@ -80,5 +82,23 @@ func TestStack(t *testing.T) {
 		if actual2 != expected2 {
 			t.Errorf("got %v\nwant %v", actual2, expected2)
 		}
+	})
+
+	t.Run("afterPushingXandY_willPopYthenX", func(t *testing.T) {
+		s := NewStack()
+		s.Push(99)
+		s.Push(88)
+		actual, _ := s.Pop()
+		expected := 88
+		if actual != expected {
+			t.Errorf("got %v\nwant %v", actual, expected)
+		}
+
+		actual2, _ := s.Pop()
+		expected2 := 99
+		if actual2 != expected2 {
+			t.Errorf("got %v\nwant %v", actual2, expected2)
+		}
+
 	})
 }
